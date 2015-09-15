@@ -6,7 +6,7 @@ a jquery plugin for step by step guide of website
 
 see  [http://nekorice.github.io/nvguide/](http://nekorice.github.io/nvguide/)
 
-# Sample Usage
+# Usage
 
 ```javascript
 
