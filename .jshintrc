@@ -1,0 +1,17 @@
+{
+  "bitwise":true,
+  "node": true,
+  "browser": true,
+  "esnext": true,
+  "camelcase": true,
+  "curly": true,
+  "immed": true,
+  "indent": 2,
+  "newcap": true,
+  "noarg": true,
+  "undef": true,
+  "unused": "vars",
+  "strict": true,
+  "asi":true,
+  "sub":true
+}
