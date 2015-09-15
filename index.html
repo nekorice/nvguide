@@ -1,0 +1,199 @@
+<html>
+
+<head>
+<title>Guide Docs</title>
+
+<script src="asset/jquery-1.11.3.js"></script>
+<script src="../dist/nvguide.js"></script>
+<link href="../dist/nvguide.css" rel="stylesheet"></link>
+
+<link href="asset/bootstrap.min.css" rel="stylesheet"></link>
+<link href="http://cdn.bootcss.com/highlight.js/8.0/styles/default.min.css" rel="stylesheet">  
+</head>
+
+<style>
+
+hr.big {
+  border:2px solid #232323;
+}
+
+h3,h5 {
+  margin-top: 50px;
+  font-weight: bolder;
+}
+
+</style>
+
+<body style="height:100%;width:100%;">
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>Guide</h2>
+      <hr class="big">
+
+      <h3 class="step1">1.Usage:</h3>
+      <hr>
+      
+      <h5>1.1 Simple Use</h5>
+      <pre id="code1" class="javascript">
+      
+      //init  
+      var myguide = $.guide()  
+      //add step
+      myguide.add('.selector', 'step1 tip-message').add('.selector2', 'this is step2')   
+      //start the guide
+      myguide.start()
+
+      </pre>
+
+      <a  class="btn btn-info" onclick="guide1()">Go!</a>
+      
+      <hr>
+
+      <h5>1.2 Auto Guide</h5>
+      <pre id="code2" class="javascript">
+      
+      //parse the 3rd para a number 
+      var myguide = $.guide().add('.selector', 'step1 auto', 500)
+                             .add('.selector2', 'auto step2', 500)
+                             .start();  
+      </pre>
+
+      <a class="btn btn-info" onclick="guide2()">Go!</a>      
+
+      <hr>
+
+      <h3 class="step2">2.Options:</h3>
+      <hr>
+     
+      <pre id="code1" class="javascript">
+      
+      //init
+      var options= {
+          //默认是否调用targe.click()
+          bundle: false,
+          //every guide before callback
+          onGuideBefore: noop,
+          //every guide after callback
+          onGuideAfter: noop,
+          //all guide done callback
+          onGuideDone: noop,
+          //start callback
+          onGuideStart: noop,
+          //tip位置
+          tip_margin: 75,
+          //tip class
+          tip_class: "guide_tip",
+      }
+
+      var myguide = $.guide(options)  
+
+      </pre>
+
+      <table class="table table-striped">
+        <tr>
+          <th>param</th><th>default</th><th>describe</th>
+        </tr>
+        <tr>
+          <td>bundle</td><td>false</td><td>不传递bundle参数时的默认bundle参数</td>
+        </tr>
+        <tr>
+          <td>tip_margin</td><td>75</td><td>提示信息和target的距离</td>
+        </tr>
+        <tr>
+          <td>tip_class</td><td>guide_tip</td><td>提示信息的class</td>
+        </tr>        
+        <tr>
+          <td>onGuideStart</td><td>null</td><td>before start callback</td>
+        </tr>                
+        <tr>
+          <td>onGuideBefore</td><td>null</td><td>every guide before callback</td>
+        </tr>
+        <tr>
+          <td>onGuideAfter</td><td>null</td><td>every guide after callback</td>
+        </tr>
+        <tr>
+          <td>onGuideDone</td><td>null</td><td>after all guide done callback</td>
+        </tr>
+        <tr>
+          <td>onGuideStart</td><td>null</td><td>before start callback</td>
+        </tr>
+      </table>  
+
+      <h3 class="step3">3.Methods:</h3>
+      <hr>
+      <h5>3.1 add</h5>
+
+      <p>add one guide step</p>
+
+      <pre class="javascript">
+        add:function(target, message, bundle, callback){}
+      </pre>  
+
+      <table class="table table-striped">
+        <tr>
+          <th>param</th><th>describe</th>
+        </tr>
+        <tr>
+          <td> target </td><td> 被引导元素的选择器 </td>
+        </tr>
+        <tr>
+          <td> message </td><td> 显示的引导信息 </td>
+        </tr>
+        <tr>
+          <td> bundle </td>
+          <td> 
+            <p>可以设置两种值，来达到不同效果:</p> 
+            <p>1.设置为数字时，表示这个引导使用定时器，经过bundle毫秒之后，就会继续下一步</p>
+            <p>2.设置为boolean值时，true，表示点击引导的时候也会触发targe的click事件，不填或者false表示不触发</p>
+          </td>
+        </tr> 
+        <tr>
+          <td> callback </td><td> 引导结束之后的回调函数 </td>
+        </tr>
+      </table>
+
+      <h5>3.2 start</h5>
+      
+      <p>Start the guide</p>
+      
+      <pre class="javascript">
+        start:function(){}
+      </pre>       
+
+      <table class="table table-striped">
+        <tr>
+          <th>param</th><th>describe</th>
+        </tr>
+        <tr>
+          <td> \ </td><td> \ </td>
+        </tr> 
+      </table>
+      
+
+    </div>
+  </div>  
+</div>
+
+<footer style="height:300px"></footer>
+</body>
+
+<script>
+function guide1(){
+  $.guide().add('.step1','this is stpe1').add('.step2','this is step2').add('#code1','back to code').start();
+}
+
+function guide2(){
+  $.guide().add('.step2', 'step1 auto', 1200).add('.step3', 'auto step2', 1200).add('#code2', 'back to code', 1200).start(); 
+}
+
+
+$(function(){
+  $('pre').each(function(i, e) {hljs.highlightBlock(e)});
+});
+</script>  
+
+<script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>  
+
+</html>
