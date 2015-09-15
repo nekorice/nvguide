@@ -1,0 +1,24 @@
+{
+  "name": "nvguide",
+  "main": "guide.js",
+  "version": "0.0.9",
+  "description": "a jquery plugin for display guide in web page",
+  "keywords": [
+    "guide",
+    "plugin"
+  ],
+  "authors": [
+    "nekorice"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~1.11.3"
+  }
+}
